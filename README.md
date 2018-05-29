@@ -1,2 +1,4 @@
-# squadgoals
-A soccer team management web app
+# Squad Goals
+A soccer team-management web application
+
+Still in progress...
