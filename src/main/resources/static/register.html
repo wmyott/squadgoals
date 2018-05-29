@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register a Team</title>
+</head>
+<body>
+<header>
+    <h1>Squad Goals</h1>
+    <p>An application for creating, managing, and running your team</p>
+
+    <nav class="site-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="view.html">View Team</a></li>
+        </ul>
+    </nav>
+</header>
+<section class="register">
+    <header>
+        <h1>Register a Team</h1>
+    </header>
+    <form action="app/register" method="post">
+        <label for="team-name">Team Name</label><input id="team-name" name="team-name" type="text" placeholder="Team Name">
+        <label for="roster-size">Roster Size</label><input id="roster-size" name="roster-size" type="number" placeholder="10">
+        <input type="submit" value="Create Team">
+    </form>
+</section>
+
+<footer>
+    <p>
+        &copy; 2018 - Will Myott
+    </p>
+</footer>
+</body>
+</html>

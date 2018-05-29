@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Team</title>
+</head>
+<body>
+<header>
+    <h1>Squad Goals</h1>
+    <p>An application for creating, managing, and running your team</p>
+
+    <nav class="site-nav">
+        <ul>
+            <li><a th:href="@{~/index.html}">Home</a></li>
+            <li><a th:href="@{~/register.html}">Register</a></li>
+            <li><a th:href="@{~/view.html}">View Team</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="view-team">
+    <h1>Team Details</h1>
+    <div class="team-details">
+        <!--/*@thymesVar id="team" type="com.wmyott.squadgoals.entities.Team"*/-->
+        <span th:text="'Team Name: ' + ${team.teamName}"></span>
+        <br>
+        <span th:text="'Team Size: ' + ${team.teamSize}"></span>
+    </div>
+</section>
+
+<footer>
+    <p>
+        &copy; 2018 - Will Myott
+    </p>
+</footer>
+</body>
+</html>
