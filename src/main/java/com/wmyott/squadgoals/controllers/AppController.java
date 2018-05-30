@@ -2,10 +2,14 @@ package com.wmyott.squadgoals.controllers;
 
 import java.util.Map;
 
+import com.wmyott.squadgoals.dto.TeamDto;
 import com.wmyott.squadgoals.repositories.TeamRepository;
 import com.wmyott.squadgoals.entities.Team;
+import com.wmyott.squadgoals.util.TeamConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,13 +20,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AppController
 {
     @PostMapping("app/register")
-    public String register(@RequestParam("team-name") String name, @RequestParam("roster-size") int size)
+    public String register(@ModelAttribute TeamDto teamDto)
     {
-        System.out.println("Team Name: " + name);
-        System.out.println("Team Size: " + size);
-        Team team = new Team(name, size);
+        Team team = TeamConverter.convertToEntity(teamDto);
         teamRepository.save(team);
         return "redirect:/index.html";
+    }
+
+    @GetMapping("app/register")
+    public String registrationPage()
+    {
+        return "register";
     }
 
     @PostMapping("app/view")

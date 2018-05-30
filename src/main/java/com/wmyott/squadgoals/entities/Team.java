@@ -1,33 +1,34 @@
 package com.wmyott.squadgoals.entities;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Team
 {
 
-    @Id
-    @GeneratedValue
-    private Long id;
-
-    @Column(nullable=false)
-    private String teamName;
-
-    @Column(nullable=false)
-    private int teamSize;
-
     protected Team()
     {
+        // Required for JPA
+    }
+
+    public Team(String teamName, Set<TeamMember> roster)
+    {
+        this.teamName = teamName;
+        this.roster = roster;
 
     }
 
-    public Team(String teamName, int teamSize)
+    public Set<TeamMember> getRoster()
     {
-        this.teamName = teamName;
-        this.teamSize = teamSize;
+        return roster;
     }
 
     public String getTeamName()
@@ -35,8 +36,15 @@ public class Team
         return teamName;
     }
 
-    public int getTeamSize()
-    {
-        return teamSize;
-    }
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @Column(nullable = false)
+    private String teamName;
+
+    @JoinTable(name = "TEAM_MEMBER", joinColumns = @JoinColumn(name = "TEAM_ID", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "MEMBER_ID", referencedColumnName = "ID"))
+    @ManyToMany
+    private Set<TeamMember> roster;
 }

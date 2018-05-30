@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register a Team</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header">
+    <!-- Header -->
+</div>
+<section class="register">
+    <header>
+        <h1>Register a Team</h1>
+    </header>
+    <!--/*@thymesVar id="teamDto" type="com.wmyott.squadgoals.dto.TeamDto"*/-->
+    <form action="app/register" method="post" th:object="${teamDto}">
+        <label for="team-name">Team Name</label><input id="team-name" type="text" th:field="*{name}" placeholder="Team Name">
+        <fieldset>
+            <label for=""></label>
+        </fieldset>
+        <input type="submit" value="Create Team">
+    </form>
+</section>
+
+<div th:replace="fragments/footer :: footer">
+    <!-- Footer -->
+</div>
+</body>
+</html>
